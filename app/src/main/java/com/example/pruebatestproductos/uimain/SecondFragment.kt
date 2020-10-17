@@ -1,6 +1,7 @@
 package com.example.pruebatestproductos.uimain
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,7 +15,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pruebatestproductos.R
 import com.example.pruebatestproductos.pojo.Products
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_second.*
 import kotlinx.android.synthetic.main.fragment_second.view.*
 import kotlinx.android.synthetic.main.item_products_details.view.titleTV
 
@@ -57,7 +60,10 @@ class SecondFragment : Fragment() , Adapter.IAdapter {
             mViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
 
+
         }
+
+
     }
 
 
@@ -67,6 +73,7 @@ class SecondFragment : Fragment() , Adapter.IAdapter {
         savedInstanceState: Bundle?
     ): View? {
         val view :View=inflater.inflate(R.layout.fragment_second, container, false)
+
 
 
         param1?.let {
@@ -88,7 +95,29 @@ class SecondFragment : Fragment() , Adapter.IAdapter {
                     .placeholder(R.drawable.ic_launcher_foreground)
                     .into(view.photoTV)
 
+                fab.setOnClickListener { view ->
+                    Snackbar.make(view, "Send mail", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show()
+                    val Email = Intent(Intent.ACTION_SEND)
+                    Email.setType("text/email")
+                    Email.putExtra(Intent.EXTRA_EMAIL,
+                        arrayOf<String>("info@plaplix.cl")) //destinatario email
+                    Email.putExtra(Intent.EXTRA_SUBJECT,
+                        "consulta por ${it.name} , id ${it.id}") // Email 's Subject
+                    Email.putExtra(Intent.EXTRA_TEXT, "“Hola\n" +
+                            "Vi el producto ${it.name} y me gustaría que me contactaran a este correo o al\n" +
+                            "siguiente número _________\n" +
+                            "Quedo atento.”" ) //Email 's Greeting text
+                    startActivity(Intent.createChooser(Email, "Send Feedback:"))
+
+
+                }
+
+
+
             })
+
+
         }
 
 
