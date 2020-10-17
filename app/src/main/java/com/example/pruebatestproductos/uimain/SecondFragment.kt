@@ -25,7 +25,7 @@ private const val ARG_PARAM2 = "name"
 private const val ARG_PARAM3 = "image"
 
 
-private var shListItem :  List<Products> = ArrayList<Products>()
+private var ListItem :  List<Products> = ArrayList<Products>()
 
 private lateinit var viewAdapter: Adapter
 private lateinit var mViewModel: MainViewModel
@@ -77,12 +77,12 @@ class SecondFragment : Fragment() , Adapter.IAdapter {
 
                 view.titleTV.text = " ${it.name}"
                 //view.titleTV.text = it.name
-                if(it.details?.description != null){
-                    Log.d("description",it.details.description)
-                    view.apparanceTV.text = "Description: ${it.details!!.description}"}
+                if(it.description != null){
+                    Log.d("description",it.description)
+                    view.apparanceTV.text = "Description: ${it.description}"}
 
-                view.apparance2TV.text = "Price ${it.details!!.credit}"
-                view.apparance3TV.text = "Last Price ${it.details!!.lastPrice}"
+                view.apparance2TV.text = "Credit = ${it.credit}"
+                view.apparance3TV.text = "Last Price $ ${it.lastPrice}"
                 Picasso.get()
                     .load(it.image)
                     .placeholder(R.drawable.ic_launcher_foreground)

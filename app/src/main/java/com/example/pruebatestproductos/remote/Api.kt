@@ -8,8 +8,8 @@ import retrofit2.http.GET
 interface Api {
 
     @GET("products")
-    fun getProducts(): Call<List<Products>>
+    fun getDetails(): Call<List<Products>>
 
     @GET("details")
-    fun getDetails(): Call<List<Details>>
+    fun getProducts(): Call<List<Products>>
 }

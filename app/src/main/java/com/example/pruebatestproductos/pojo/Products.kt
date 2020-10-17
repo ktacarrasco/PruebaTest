@@ -10,7 +10,9 @@ data class Products (@PrimaryKey() @NonNull val  id : Int,
                      val name: String,
                      val price: String,
                      val image: String,
-             @Embedded val details: Details? )
+                     val description: String,
+                     val lastPrice: Int,
+                     val credit: Boolean? )
 {
 
 
