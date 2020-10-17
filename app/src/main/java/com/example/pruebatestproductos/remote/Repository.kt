@@ -23,7 +23,7 @@ class Repository (context: Context){
 
 
 
-    fun  passIdtoFragment(id :Int): LiveData<Products> {
+    fun  passIdtoFragment(id: Int): LiveData<Products> {
 
         return  db.prodDao().getIdList(id)
     }

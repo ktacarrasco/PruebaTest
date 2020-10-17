@@ -24,7 +24,7 @@ interface DaoProducts {
 
     //traer elemento desde id
     @Query("SELECT * FROM Products_table WHERE id=:mId")
-    fun getIdList(mId:Int) : LiveData<Products>
+    fun getIdList(mId: Int) : LiveData<Products>
 
 
 

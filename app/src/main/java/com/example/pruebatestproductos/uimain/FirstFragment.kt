@@ -14,16 +14,7 @@ import com.example.pruebatestproductos.R
 import com.example.pruebatestproductos.pojo.Products
 import kotlinx.android.synthetic.main.fragment_first.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FirstFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FirstFragment : Fragment() , Adapter.MyClickListener{
     private var prodList =  ArrayList<Products>()
 
@@ -68,12 +59,12 @@ class FirstFragment : Fragment() , Adapter.MyClickListener{
         })
     }
 
-    override fun onItemClick(superHero: Products) {
+    override fun onItemClick(products: Products) {
 
         val bundle=Bundle()
-        bundle.putInt("id",superHero.id)
+        bundle.putInt("id",products.id)
+        findNavController().navigate(R.id.action_firstFragment_to_secondFragment,bundle)
 
-       // findNavController().navigate(R.id.action_mainFragment_to_secondFragment,bundle)
 
 
     }

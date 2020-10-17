@@ -1,10 +1,12 @@
 package com.example.pruebatestproductos.uimain
 
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pruebatestproductos.R
 import com.example.pruebatestproductos.pojo.Products
@@ -23,6 +25,7 @@ class Adapter(var mdataSetP: List<Products>, var listenerS: MyClickListener) : R
     class prodHolder (itemView: View): RecyclerView.ViewHolder(itemView){
         val titleTv= itemView.titleTV
         val photoTv= itemView.photoTV
+        val priceTv= itemView.priceView
 
     }
 
@@ -40,10 +43,11 @@ class Adapter(var mdataSetP: List<Products>, var listenerS: MyClickListener) : R
     override fun onBindViewHolder(holder: prodHolder, position: Int) {
         val photo =  mdataSetP[position]
 
-        val titletv ="Super Hero: ${photo.name}"
-        //val phototv="images: ${Images.sm}"
+        val titletv =" ${photo.name}"
+        val pricetv="Price$ ${photo.price}"
 
         holder.titleTv.text = titletv
+        holder.priceTv.text = pricetv
 
         Picasso.get()
             .load(photo.image)
@@ -52,16 +56,24 @@ class Adapter(var mdataSetP: List<Products>, var listenerS: MyClickListener) : R
 
         holder.itemView.setOnClickListener(View.OnClickListener{
 
-            Toast.makeText(holder.itemView.context,"$titletv", Toast.LENGTH_SHORT).show()
+            Toast.makeText(holder.itemView.context," $titletv", Toast.LENGTH_SHORT).show()
             listenerS.onItemClick(mdataSetP.get(position))
 
         })
+
+
+
     }
 
     interface MyClickListener {
 
         fun onItemClick(products: Products)
+
     }
 
+    interface IAdapter{
+        fun getFromAdapter(id:Int)
+
+    }
 
 }

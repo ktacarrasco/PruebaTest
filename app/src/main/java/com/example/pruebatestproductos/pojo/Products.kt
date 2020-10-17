@@ -1,6 +1,7 @@
 package com.example.pruebatestproductos.pojo
 
 import androidx.annotation.NonNull
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -8,7 +9,8 @@ import androidx.room.PrimaryKey
 data class Products (@PrimaryKey() @NonNull val  id : Int,
                      val name: String,
                      val price: String,
-                     val image: String)
+                     val image: String,
+             @Embedded val details: Details? )
 {
 
 

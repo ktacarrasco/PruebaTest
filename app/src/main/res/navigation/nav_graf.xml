@@ -8,5 +8,19 @@
         android:id="@+id/firstFragment"
         android:name="com.example.pruebatestproductos.uimain.FirstFragment"
         android:label="fragment_first"
-        tools:layout="@layout/fragment_first" />
+        tools:layout="@layout/fragment_first" >
+        <action
+            android:id="@+id/action_firstFragment_to_secondFragment"
+            app:destination="@id/secondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scrollingFragment"
+        android:name="com.example.pruebatestproductos.uimain.ScrollingFragment"
+        android:label="fragment_scrolling"
+        tools:layout="@layout/fragment_scrolling" />
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.example.pruebatestproductos.uimain.SecondFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_second" />
 </navigation>
