@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -86,7 +86,8 @@ class SecondFragment : Fragment() , Adapter.IAdapter {
                 //view.titleTV.text = it.name
                 if(it.description != null){
                     Log.d("description",it.description)
-                    view.apparanceTV.text = "Description: ${it.description}"}
+                    view.apparanceTV.text = getString(R.string.Description) + it.description
+                }
 
                 view.apparance2TV.text = "Credit = ${it.credit}"
                 view.apparance3TV.text = "Last Price $ ${it.lastPrice}"
